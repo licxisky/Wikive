@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/documents/{document}/{slug?}', 'DocumentController@show')->name('documents.show');
 
-Route::group(['prefix' => '/admin'], function () {
-    Route::get('/project', 'Admin\ProjectController@index')->name('admin.projects.index');
+Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
+    Route::resource('projects', 'Admin\ProjectController');
+    Route::group(['prefix' => '/projects/{project}', 'as' => 'projects.'], function () {
+        Route::resource('documents', 'Admin\DocumentController', ['except' => ['show']]);
+    });
 });
