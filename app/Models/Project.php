@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
@@ -14,5 +15,9 @@ class Project extends Model
 
     public function firstDocument() {
         return $this->documents()->orderBy('sort')->latest();
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }
