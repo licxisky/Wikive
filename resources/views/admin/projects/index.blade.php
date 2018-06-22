@@ -42,9 +42,16 @@
                                         <td>{{ $project->user->name }}</td>
                                         <td>{{ $project->type }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-success btn-xs" title="查看"><i class="fa fa-eye"></i></a>
-                                            <a href="#" class="btn btn-info btn-xs" title="编辑"><i class="fa fa-edit"></i></a>
-                                            <a href="#" class="btn btn-danger btn-xs" title="删除"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('admin.projects.show', [$project]) }}" class="btn btn-success btn-xs" title="查看"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('admin.projects.documents.index', [$project]) }}" class="btn btn-info btn-xs" title="文档"><i class="fa fa-list"></i></a>
+                                            <a href="{{ route('admin.projects.edit', [$project]) }}" class="btn btn-warning btn-xs" title="编辑"><i class="fa fa-edit"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-danger btn-xs" title="删除"
+                                               onclick="document.getElementById('project_{{ $project->id }}_delete').click()"><i class="fa fa-trash"></i></a>
+                                            <form class="hidden" method="post" action="{{ route('admin.projects.destroy', [$project]) }}">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <input type="submit" id="project_{{ $project->id }}_delete">
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
