@@ -18,6 +18,7 @@ class CreateProjectsTable extends Migration
             $table->string("name");
             $table->integer("user_id")->unsigned();
             $table->integer("max_sort");
+            $table->string("type");
             $table->timestamps();
         });
     }
