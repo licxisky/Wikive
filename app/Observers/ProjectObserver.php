@@ -9,7 +9,11 @@
 namespace App\Observers;
 
 
+use App\Models\Project;
+
 class ProjectObserver
 {
-
+    public function creating(Project $project) {
+        $project->max_sort = 0;
+    }
 }
