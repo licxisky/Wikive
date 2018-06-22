@@ -11,4 +11,8 @@ class Project extends Model
     public function documents() {
         return $this->hasMany(Document::class);
     }
+
+    public function firstDocument() {
+        return $this->documents()->orderBy('sort')->latest();
+    }
 }
