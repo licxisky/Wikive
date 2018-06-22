@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'type'];
 
     public function documents() {
         return $this->hasMany(Document::class);
