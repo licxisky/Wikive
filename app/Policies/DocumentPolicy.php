@@ -11,50 +11,50 @@ class DocumentPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Determine whether the user can view the document.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Models\Document  $document
-     * @return mixed
-     */
-    public function view(User $user, Document $document)
-    {
+    // Common method
+    private function userDocument(User $user, Document $document) {
         return $document->project->users()->whereId($user->id)->exists();
     }
 
-    /**
-     * Determine whether the user can create documents.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function create(User $user, Project $project)
-    {
+    // Common Method
+    private function userProject(User $user, Project $project) {
         return $project->users()->whereId($user->id)->exists();
     }
 
-    /**
-     * Determine whether the user can update the document.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Models\Document  $document
-     * @return mixed
-     */
-    public function update(User $user, Document $document)
-    {
-        return $document->project->users()->whereId($user->id)->exists();
+    // Rescource Method
+    public function index(User $user, Project $project) {
+        return $this->userProject($user, $project);
     }
 
-    /**
-     * Determine whether the user can delete the document.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Models\Document  $document
-     * @return mixed
-     */
-    public function delete(User $user, Document $document)
-    {
-        return $document->project->users()->whereId($user->id)->exists();
+    public function show(User $user, Document $document) {
+        return $this->userDocument($user, $document);
+    }
+
+    public function create(User $user, Project $project) {
+        return $this->userProject($user, $project);
+    }
+
+    public function store(User $user, Project $project) {
+        return $this->userProject($user, $project);
+    }
+
+    public function edit(User $user, Document $document) {
+        return $this->userDocument($user, $document);
+    }
+
+    public function update(User $user, Document $document) {
+        return $this->userDocument($user, $document);
+    }
+
+    public function delete(User $user, Document $document) {
+        return $this->userDocument($user, $document);
+    }
+
+    public function up(User $user, Document $document) {
+        return $this->userDocument($user, $document);
+    }
+
+    public function down(User $user, Document $document) {
+        return $this->userDocument($user, $document);
     }
 }
