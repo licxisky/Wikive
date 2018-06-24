@@ -27,4 +27,6 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
         Route::get('/documents/{document}/up', 'Admin\DocumentController@up')->name('documents.up');
         Route::get('/documents/{document}/down', 'Admin\DocumentController@down')->name('documents.down');
     });
+
+    Route::resource('users', 'Admin\UserController');
 });
