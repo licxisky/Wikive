@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+
+    @yield('styles')
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('bower_components/admin-lte/dist/css/AdminLTE.min.css') }}">
 
@@ -29,7 +31,6 @@
     <!-- Google Font -->
     {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">--}}
 
-    @yield('styles')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">

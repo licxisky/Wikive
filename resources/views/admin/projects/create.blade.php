@@ -16,7 +16,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-md-offset-3 col-md-6">
+                <div class="col-md-6">
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -27,13 +27,21 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>项目名称</label>
-                                    <input type="text" name="name" class="form-control">
+                                    <input type="text" name="name" class="form-control" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label>项目类型</label>
                                     <select name="type" class="form-control">
                                         <option value="公开">公开</option>
                                         <option value="私密">私密</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>项目成员</label>
+                                    <select name="users[]" class="form-control select2" multiple style="width: 100%">
+                                        @foreach($users as $user)
+                                        <option value="{{ $user->id }}" @if($user->id == Auth::id()) selected @endif>{{ $user->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -45,10 +53,26 @@
                     </div>
 
                 </div>
-                <!-- /.col -->
             </div>
             <!-- /.row -->
         </section>
         <!-- /.content -->
     </div>
+@endsection
+
+@section('styles')
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset("bower_components/select2/dist/css/select2.min.css") }}">
+
+@endsection
+
+@section('scripts')
+
+    <!-- Select2 -->
+    <script src="{{ asset("bower_components/select2/dist/js/select2.full.min.js") }}"></script>
+
+    <script>
+        $('.select2').select2()
+    </script>
 @endsection

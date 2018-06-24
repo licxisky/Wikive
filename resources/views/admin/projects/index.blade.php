@@ -5,7 +5,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                项目管理
+                项目管理 <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">新建项目</a>
             </h1>
             <ol class="breadcrumb">
                 <li>后台管理</li>

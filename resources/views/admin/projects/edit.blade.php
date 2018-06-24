@@ -16,7 +16,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-md-offset-3 col-md-6">
+                <div class="col-md-6">
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -37,6 +37,14 @@
                                         <option value="私密" @if($project->type == '私密') selected @endif>私密</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label>项目成员</label>
+                                    <select name="users[]" class="form-control select2" multiple style="width: 100%">
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="box-footer">
@@ -52,4 +60,25 @@
         </section>
         <!-- /.content -->
     </div>
+@endsection
+
+@section('styles')
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset("bower_components/select2/dist/css/select2.min.css") }}">
+
+@endsection
+
+@section('scripts')
+
+    <!-- Select2 -->
+    <script src="{{ asset("bower_components/select2/dist/js/select2.full.min.js") }}"></script>
+
+
+    <script>
+        var selected_json = [
+            @foreach($project->users as $user){{ $user->id }},@endforeach
+        ];
+        $('.select2').select2().val(selected_json).trigger("change");
+    </script>
 @endsection
