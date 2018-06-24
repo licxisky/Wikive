@@ -16,4 +16,8 @@ class ProjectObserver
     public function creating(Project $project) {
         $project->max_sort = 0;
     }
+
+    public function deleting(Project $project) {
+        $project->documents()->delete();
+    }
 }

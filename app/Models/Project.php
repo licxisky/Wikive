@@ -10,7 +10,7 @@ class Project extends Model
     protected $fillable = ['name', 'type'];
 
     public function documents() {
-        return $this->hasMany(Document::class);
+        return $this->hasMany(Document::class)->orderBy('sort');
     }
 
     public function firstDocument() {
