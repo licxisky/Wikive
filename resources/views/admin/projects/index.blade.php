@@ -42,7 +42,6 @@
                                         <td>{{ $project->user->name }}</td>
                                         <td>{{ $project->type }}</td>
                                         <td>
-                                            <a href="{{ route('admin.projects.show', [$project]) }}" class="btn btn-success btn-xs" title="查看"><i class="fa fa-eye"></i></a>
                                             <a href="{{ route('admin.projects.documents.index', [$project]) }}" class="btn btn-info btn-xs" title="文档"><i class="fa fa-list"></i></a>
                                             <a href="{{ route('admin.projects.edit', [$project]) }}" class="btn btn-warning btn-xs" title="编辑"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)" class="btn btn-danger btn-xs" title="删除"
