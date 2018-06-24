@@ -26,13 +26,13 @@
             <li class="header">后台菜单</li>
             <li class="@if(startWith(Request::route()->getName(), 'admin.projects')) active @endif">
                 <a href="{{ route('admin.projects.index') }}">
-                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-th"></i>
                     <span>项目管理</span>
                 </a>
             </li>
             <li class="@if(startWith(Request::route()->getName(), 'admin.users')) active @endif">
-                <a href="{{ route('admin.projects.index') }}">
-                    <i class="fa fa-edit"></i>
+                <a href="{{ route('admin.users.index') }}">
+                    <i class="fa fa-th"></i>
                     <span>用户管理</span>
                 </a>
             </li>

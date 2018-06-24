@@ -26,7 +26,7 @@ class DocumentPolicy
         return $this->userProject($user, $project);
     }
 
-    public function show(User $user, Document $document) {
+    public function view(User $user, Document $document) {
         return $this->userDocument($user, $document);
     }
 
