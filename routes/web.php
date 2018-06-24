@@ -23,6 +23,8 @@ Route::get('/documents/{document}/{slug?}', 'DocumentController@show')->name('do
 Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
     Route::resource('projects', 'Admin\ProjectController');
     Route::group(['prefix' => '/projects/{project}', 'as' => 'projects.'], function () {
-        Route::resource('documents', 'Admin\DocumentController', ['except' => ['show']]);
+        Route::resource('documents', 'Admin\DocumentController');
+        Route::get('/documents/{document}/up', 'Admin\DocumentController@up')->name('documents.up');
+        Route::get('/documents/{document}/down', 'Admin\DocumentController@down')->name('documents.down');
     });
 });
