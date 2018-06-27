@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->string("name");
             $table->integer("user_id")->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer("max_sort");
             $table->string("type");
             $table->timestamps();
